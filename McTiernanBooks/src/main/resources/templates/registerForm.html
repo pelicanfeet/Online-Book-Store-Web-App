@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Register</title>
+</head>
+<body>
+	<h1>Registration Form</h1><br>
+	<form action="#" th:action="@{/register}" th:object="${user}" method="post">
+	
+		<label for="firstName"> First Name </label><br>
+		<input id="firstName" type="text" th:field="*{firstName}" placeholder="First Name" name="firstName"/>
+		<td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First Name Error</td><br><br>
+		
+		<label for="lastName"> Last Name </label><br>
+		<input id="lastName" type="text" th:field="*{lastName}" placeholder="Last Name" name="lastName"/>
+		<td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last Name Error</td><br><br>
+
+		<label for="homeAddress"> Home Address </label><br>
+		<input id="homeAddress" type="text" th:field="*{homeAddress}" placeholder="Home Address" name="homeAddress"/>
+		<td th:if="${#fields.hasErrors('homeAddress')}" th:errors="*{homeAddress}">Home Address Error</td><br><br>
+
+		<label for="email"> Email </label><br>
+		<input id="email" type="text" th:field="*{email}" placeholder="Email" name="email"/>
+		<td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</td><br><br>
+		
+		<label for="password"> Password </label><br>
+		<input id="password" type="password" th:field="*{password}" placeholder="Password" name="password"/>
+		<td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td><br><br>
+		
+		<label for="confPassword"> Confirm Password </label><br>
+		<input id="confPassword" type="password" th:field="*{confPassword}" placeholder="Confirm Password" name="confPassword"/>
+		<td th:if="${#fields.hasErrors('confPassword')}" th:errors="*{confPassword}">Password Confirmation Error</td><br><br>
+
+		<table>
+		<tr><td>
+			<ul>
+				<label for="roles"> Available Roles </label>
+		  		<li th:each="aType : ${roleTypes}">
+	    		<input type="checkbox" th:field="*{roles}" th:value="${aType}" />
+	    		<label th:for="${#ids.prev('roles')}" th:text="${aType}">User Role</label>
+	  	  		</li>
+			</ul>
+			<span class="error" th:if="${#fields.hasErrors('roles')}" th:errors="*{roles}"></span><br><br>
+		</td></tr>
+		</table>
+
+	  	<td><button type="submit">Submit</button></td>
+	  	<td></td>
+	</form>
+</body>
+</html>

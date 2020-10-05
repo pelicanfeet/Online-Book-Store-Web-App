@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html 
+	xmlns:th = "http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="ISO-8859-1">
+<title>McTiernan Books</title>
+</head>
+<body>
+	<h1><b>Home Page</b></h1><br>
+	<h1 th:inline="text">Hello, [[${#httpServletRequest.remoteUser}]]!</h1>
+	<p><b>You possess the following roles:</b></p>
+	<div sec:authorize="hasRole('CUSTOMER')">CUSTOMER</div>
+	<div sec:authorize="hasRole('EMP')">EMPLOYEE</div>
+	<div sec:authorize="hasRole('ADMIN')">ADMIN</div>
+	
+	<br>
+	<table>
+		<tr>
+			<td><b>Welcome to the McTiernan Book Store, </b></td>
+			<td th:text="${firstName}"><b> </b></td>
+			<td th:text="' ' + ${lastName}"><b> </b></td>
+		</tr>
+	</table>
+	
+	
+	<br>
+	<table border="1">
+		<tr>
+			<td>User Role</td><td>Can Access</td>
+		</tr>
+		<tr>
+			<td>CUSTOMER</td>
+			<td>
+				<br>
+				<a th:href="@{/home}"> Home </a><br>
+				<a th:href="@{/book/searchForm}"> Search for a Book </a><br>
+				<a th:href="@{/book/all}"> View All Books </a><br>
+				<br>
+			</td>
+		</tr>
+		<tr>
+			<td>EMPLOYEE</td>
+			<td>
+				<br>
+				<a th:href="@{/home}"> Home </a><br>
+				<a th:href="@{/book/searchForm}"> Search for a Book </a><br>
+				<a th:href="@{/book/all}"> View All Books </a><br>
+				<a th:href="@{/book/add}"> Add Book </a><br>
+				<div sec:authorize="hasRole('EMP')"><a th:href="@{/user/all}"> View All Users </a></div>
+				<br>
+			</td>
+		</tr>
+		<tr>
+			<td>ADMIN</td>
+			<td>
+				<br>
+				<a th:href="@{/home}"> Home </a><br>
+				<a th:href="@{/book/searchForm}"> Search for a Book </a><br>
+				<a th:href="@{/book/all}"> View All Books </a><br>
+				<a th:href="@{/book/add}"> Add Book </a><br>
+				<a th:href="@{/book/deleteForm}"> Delete a Book </a><br>
+				<div sec:authorize="hasRole('ADMIN')"><a th:href="@{/user/all}"> View All Users </a></div>
+				<br>
+			</td>
+		</tr>
+		<tr>
+			<td>Not Logged In</td>
+			<td>
+				<br>
+				<a th:href="@{/}"> Login </a><br>
+				<a th:href="@{/register}"> Register </a><br>
+				<a th:href="@{/home}"> Home </a><br>
+				<br>
+			</td>
+		</tr>
+	</table>
+
+	<br>
+
+	<div class="container">
+		<form class="form-signin" th:action="@{/logout}" method="post">
+ 		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign Out</button>
+ 		</form>
+ 	</div>
+</body>
+</html>

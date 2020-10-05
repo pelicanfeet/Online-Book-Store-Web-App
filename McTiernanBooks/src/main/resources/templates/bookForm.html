@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Book Form</title>
+</head>
+<body>
+	<h1><a href="/home"> Home </a></h1><br>
+	<h1>Book Form</h1><br>
+	<form action="#" th:action="@{/book/add}" th:object="${webBook}" method="post">
+	
+		<label for="isbn"> ISBN</label><br>
+		<input id="isbn" type="text" th:field="*{isbn}" placeholder="ISBN" name="isbn"/>
+		<td th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}">ISBN Error</td><br><br>
+		
+		<label for="isbnConfirm"> Confirm ISBN</label><br>
+		<input id="isbnConfirm" type="text" th:field="*{isbnConfirm}" placeholder="Confirm ISBN" name="isbnConfirm"/>
+		<td th:if="${#fields.hasErrors('isbnConfirm')}" th:errors="*{isbnConfirm}">ISBN Confirmation Error</td><br><br>
+	
+		<label for="title"> Title</label><br>
+		<input id="title" type="text" th:field="*{title}" placeholder="Title" name="title"/>
+		<td th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Title Error</td><br><br>
+			
+		<label for="author"> Author</label><br>
+		<input id="author" type="text" th:field="*{author}" placeholder="Author" name="author"/>
+		<td th:if="${#fields.hasErrors('author')}" th:errors="*{author}">Author Error</td><br><br>
+		
+		<label for="description"> Description</label><br>
+		<input id="description" type="text" th:field="*{description}" placeholder="Description" name="description"/>
+		<td th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Description Error</td><br><br>
+			
+		<label for="cost"> Cost</label><br>
+		<input id="cost" type="text" th:field="*{cost}" placeholder="Cost" name="cost"/>
+		<td th:if="${#fields.hasErrors('cost')}" th:errors="*{cost}">Cost Error</td><br><br>
+		<table>
+		<tr><td>
+			<ul>
+				<label for="format"> Available Format(s)</label>
+		  		<li th:each="aType : ${formatTypes}">
+	    		<input type="checkbox" th:field="*{format}" th:value="${aType}" />
+	    		<label th:for="${#ids.prev('format')}" th:text="${aType}">Book Format</label>
+	  	  		</li>
+			</ul>
+			<span class="error" th:if="${#fields.hasErrors('format')}" th:errors="*{format}"></span><br><br>
+		</td></tr>
+		</table>
+		<table>
+		<tr><td>
+			<ul>
+				<label for="category"> Category</label>
+				<li th:each="aType : ${categoryTypes}">
+	    		<input type="radio" th:field="*{category}" th:value="${aType}" />
+	    		<label th:for="${#ids.prev('category')}" th:text="${aType}">Book Category</label>
+	  	  		</li>
+	  	  	</ul>
+	  	  	<span class="error" th:if="${#fields.hasErrors('category')}" th:errors="*{category}"></span><br><br>
+	  	  </td></tr>
+	  	</table>
+	  	<td><button type="submit">Submit</button></td>
+	  	<td></td>
+	</form>
+
+</body>
+</html>

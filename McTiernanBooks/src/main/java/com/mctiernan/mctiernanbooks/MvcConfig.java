@@ -9,15 +9,7 @@ public class MvcConfig implements WebMvcConfigurer {
 
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
-//		registry.addViewController("/").setViewName("home");
-//		registry.addViewController("/home").setViewName("home");
-//		registry.addViewController("/book/detail").setViewName("detail");
-//		registry.addViewController("/book/add").setViewName("add");
-//		registry.addViewController("/book/delete").setViewName("delete");
-//		registry.addViewController("/login").setViewName("login");
-//
-// 		Note: These do the same thing as specifying a mapping in the Controller
-//			  via the @RequestMapping(...) tag.	
+
 	}
 
 }

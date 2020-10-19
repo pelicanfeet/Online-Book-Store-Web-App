@@ -2,7 +2,7 @@
 <html xmlns:th = "http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Books List</title>
+<title>Browsing Books</title>
 </head>
 <body>
 	<h1><a href="/home"> Home </a></h1><br>
@@ -22,7 +22,44 @@
         <td> <a th:href="@{/book/delete?isbn={isbn}(isbn=${book.isbn})}"> Delete</a></td>
       </tr>
     </table>
+    
+    <div>
+		<form th:action="@{/addToShoppingCart}" th:object="${orderItem}" method="post">
+		<table>
+			<tr>
+				<td>Product ISBN:</td>
+				<td><input type="text" th:field="*{isbn}" /></td>
+				
+			</tr>
+			<tr>
+				<td>Quantity:</td>
+				<td><input type="text" th:field="*{quantity}" /></td>
+				
+			</tr>
+			<tr>
+				<td><br> <input type="submit" value="Add to Shopping Cart" /></td><td></td>
+			</tr>
+		</table>
+		</form>
+		<div class="alert" th:if="${bookWithIsbnDoesNotExistError}" th:text="${bookWithIsbnDoesNotExistError}">
+			<br>
+			<p></p>
+		</div>
+		<div class="alert" th:if="${invalidQuantityError}" th:text="${invalidQuantityError}">
+			<br>
+			<p></p>
+		</div>
+	</div>
 
+	<div>
+		<form th:action="@{/emptyShoppingCart}" method="post">
+			<input type="submit" value="Empty Shopping Cart" />
+		</form>
+	</div>
+
+	<div>
+		<a th:href="@{/order}"> View Shopping Cart </a><br>
+	</div>
 
 </body>
 </html>

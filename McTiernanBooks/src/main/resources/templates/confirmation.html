@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Confirmation</title>
+</head>
+<body>
+
+	<div th:if="${confirmItems != null}">
+		<h2>Your Purchase Order:</h2>
+		<table border = "1">
+		<thead>
+			<tr>
+				<th>Product ISBN</th>
+				<th>Quantity</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="confirmItem : ${confirmItems}">
+				<td><span th:text="${confirmItem.isbn}">Item ISBN</span></td>
+				<td><span th:text="${confirmItem.quantity}">Item Quantity</span></td>
+			</tr>
+		</tbody>
+		</table>
+		
+		<br>
+		
+		<table border = "1">
+		<thead>
+			<tr>
+				<th>Total Cost</th>
+				<th>Date of Purchase</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><span th:text="${purchaseOrder.totalCost}">Total Cost</span></td>
+				<td><span th:text="${purchaseOrder.date}">Date</span></td>
+			</tr>
+		</tbody>
+		</table>
+	</div>
+	
+	<br><h1><a href="/home"> OK </a></h1><br>
+
+</body>
+</html>

@@ -44,7 +44,7 @@ public class BookController {
 	}
 
 	@RequestMapping(value="/book/all", method=RequestMethod.GET)
-	public String displayAllBooks(Model model) {
+	public String displayAllBooks(OrderItem orderItem, Model model) {
 		model.addAttribute("books", bookDao.getAllBooks());
 		return "books";
 	}
@@ -61,7 +61,7 @@ public class BookController {
 	@RequestMapping(value="/book/delete", method=RequestMethod.GET)
 	public String deleteBookByIsbn(@RequestParam(value="isbn") String isbn, Model model) {
 		if(bookDao.getBookByIsbn(isbn) == null)
-			return displayAllBooks(model);
+			return "books";
 		bookDao.deleteBookByIsbn(isbn);
 		return "redirect:/book/all";
 	}

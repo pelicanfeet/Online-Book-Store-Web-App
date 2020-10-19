@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Order Details</title>
+</head>
+<body>
+
+	<h1><a href="/home"> Home </a></h1><br>
+	<h1><a href="/purchaseOrder/all"> Browse Purchase Orders </a></h1><br>
+
+	<div th:if="${orderDetail != null}">
+		<h2>Your Purchase Order:</h2>
+		<table border = "1">
+		<thead>
+			<tr>
+				<th>Product ISBN</th>
+				<th>Quantity</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="oDetail : ${orderDetail}">
+				<td><span th:text="${oDetail.isbn}">Item ISBN</span></td>
+				<td><span th:text="${oDetail.quantity}">Item Quantity</span></td>
+			</tr>
+		</tbody>
+		</table>
+		
+		<br>
+		
+		<table border = "1">
+		<thead>
+			<tr>
+				<th>Total Cost</th>
+				<th>Date of Purchase</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><span th:text="${purchaseOrder.totalCost}">Total Cost</span></td>
+				<td><span th:text="${purchaseOrder.date}">Date</span></td>
+			</tr>
+		</tbody>
+		</table>
+	</div>
+
+</body>
+</html>

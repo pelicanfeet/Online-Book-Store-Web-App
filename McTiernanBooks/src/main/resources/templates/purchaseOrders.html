@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Purchase Orders</title>
+</head>
+<body>
+
+	<h1><a href="/home"> Home </a></h1><br>
+	
+	<h1>Purchase Orders list</h1>
+  
+    <table border="1" style="width:600px">
+      <tr>
+        <th>Purchase Order Id</th>
+        <th>Details</th>
+      </tr>
+      <tr th:each="purchaseOrder : ${purchaseOrders}">
+        <td th:text="${purchaseOrder.id}"></td>
+        <td><a th:href="@{/purchaseOrder/detail?po_id={po_id}(po_id=${purchaseOrder.id})}"> Click </a></td>
+      </tr>
+    </table>
+
+</body>
+</html>

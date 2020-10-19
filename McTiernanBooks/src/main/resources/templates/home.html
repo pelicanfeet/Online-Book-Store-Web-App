@@ -35,7 +35,7 @@
 				<br>
 				<a th:href="@{/home}"> Home </a><br>
 				<a th:href="@{/book/searchForm}"> Search for a Book </a><br>
-				<a th:href="@{/book/all}"> View All Books </a><br>
+				<a th:href="@{/book/all}"> Browse Books </a><br>
 				<br>
 			</td>
 		</tr>
@@ -45,9 +45,10 @@
 				<br>
 				<a th:href="@{/home}"> Home </a><br>
 				<a th:href="@{/book/searchForm}"> Search for a Book </a><br>
-				<a th:href="@{/book/all}"> View All Books </a><br>
+				<a th:href="@{/book/all}"> Browse Books </a><br>
 				<a th:href="@{/book/add}"> Add Book </a><br>
 				<div sec:authorize="hasRole('EMP')"><a th:href="@{/user/all}"> View All Users </a></div>
+				<div sec:authorize="hasRole('EMP')"><a th:href="@{/purchaseOrder/all}"> View Purchase Orders </a></div>
 				<br>
 			</td>
 		</tr>
@@ -57,10 +58,11 @@
 				<br>
 				<a th:href="@{/home}"> Home </a><br>
 				<a th:href="@{/book/searchForm}"> Search for a Book </a><br>
-				<a th:href="@{/book/all}"> View All Books </a><br>
+				<a th:href="@{/book/all}"> Browse Books </a><br>
 				<a th:href="@{/book/add}"> Add Book </a><br>
 				<a th:href="@{/book/deleteForm}"> Delete a Book </a><br>
 				<div sec:authorize="hasRole('ADMIN')"><a th:href="@{/user/all}"> View All Users </a></div>
+				<div sec:authorize="hasRole('ADMIN')"><a th:href="@{/purchaseOrder/all}"> View Purchase Orders </a></div>
 				<br>
 			</td>
 		</tr>

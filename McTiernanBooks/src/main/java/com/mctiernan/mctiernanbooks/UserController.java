@@ -56,7 +56,7 @@ public class UserController {
 		user = userDao.createUser(user);
 		List<String> roles = user.getRoles();
 		for(int i = 0; i < roles.size(); i++) {
-			roles.set(i, "ROLES_" + roles.get(i));
+			roles.set(i, "ROLE_" + roles.get(i));
 		}
 		logger.info("User created: " + user.getEmail());
 		

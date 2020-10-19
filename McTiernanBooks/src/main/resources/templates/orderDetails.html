@@ -37,7 +37,7 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td><span th:text="${purchaseOrder.totalCost}">Total Cost</span></td>
+				<td><span th:text="'$'+${purchaseOrder.totalCost}">Total Cost</span></td>
 				<td><span th:text="${purchaseOrder.date}">Date</span></td>
 			</tr>
 		</tbody>

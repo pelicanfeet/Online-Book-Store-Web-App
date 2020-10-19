@@ -25,6 +25,7 @@
 	
 	
 	<br>
+	<div sec:authorize="hasRole('CUSTOMER')">
 	<table border="1">
 		<tr>
 			<td>User Role</td><td>Can Access</td>
@@ -39,6 +40,14 @@
 				<br>
 			</td>
 		</tr>
+	</table>
+	</div>
+
+	<div sec:authorize="hasRole('EMP')">
+	<table border="1">
+		<tr>
+			<td>User Role</td><td>Can Access</td>
+		</tr>
 		<tr>
 			<td>EMPLOYEE</td>
 			<td>
@@ -47,10 +56,18 @@
 				<a th:href="@{/book/searchForm}"> Search for a Book </a><br>
 				<a th:href="@{/book/all}"> Browse Books </a><br>
 				<a th:href="@{/book/add}"> Add Book </a><br>
-				<div sec:authorize="hasRole('EMP')"><a th:href="@{/user/all}"> View All Users </a></div>
-				<div sec:authorize="hasRole('EMP')"><a th:href="@{/purchaseOrder/all}"> View Purchase Orders </a></div>
+				<a th:href="@{/user/all}"> View All Users </a><br>
+				<a th:href="@{/purchaseOrder/all}"> View Purchase Orders </a><br>
 				<br>
 			</td>
+		</tr>
+	</table>
+	</div>
+	
+	<div sec:authorize="hasRole('ADMIN')">
+	<table border="1">
+		<tr>
+			<td>User Role</td><td>Can Access</td>
 		</tr>
 		<tr>
 			<td>ADMIN</td>
@@ -61,11 +78,15 @@
 				<a th:href="@{/book/all}"> Browse Books </a><br>
 				<a th:href="@{/book/add}"> Add Book </a><br>
 				<a th:href="@{/book/deleteForm}"> Delete a Book </a><br>
-				<div sec:authorize="hasRole('ADMIN')"><a th:href="@{/user/all}"> View All Users </a></div>
-				<div sec:authorize="hasRole('ADMIN')"><a th:href="@{/purchaseOrder/all}"> View Purchase Orders </a></div>
+				<a th:href="@{/user/all}"> View All Users </a><br>
+				<a th:href="@{/purchaseOrder/all}"> View Purchase Orders </a><br>
 				<br>
 			</td>
 		</tr>
+	</table>
+	</div>
+		
+	<table border="1">
 		<tr>
 			<td>Not Logged In</td>
 			<td>
